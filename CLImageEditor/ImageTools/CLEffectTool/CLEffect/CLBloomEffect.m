@@ -7,7 +7,7 @@
 
 #import "CLBloomEffect.h"
 
-#import "UIImage+Utility.h"
+#import "UIImage+Utils.h"
 #import "UIView+Frame.h"
 
 @implementation CLBloomEffect

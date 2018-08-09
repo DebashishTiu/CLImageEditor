@@ -8,7 +8,7 @@
 #import "CLImageEditorTheme+Private.h"
 
 #import "CLImageEditor.h"
-#import "UIImage+Utility.h"
+#import "UIImage+Utils.h"
 
 @implementation CLImageEditorTheme (Private)
 

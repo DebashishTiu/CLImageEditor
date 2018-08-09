@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Utility)
+@interface UIImage (Utils)
 
 + (UIImage*)fastImageWithData:(NSData*)data;
 + (UIImage*)fastImageWithContentsOfFile:(NSString*)path;

@@ -8,7 +8,7 @@
 #import "CLPixellateEffect.h"
 
 #import "UIView+Frame.h"
-#import "UIImage+Utility.h"
+#import "UIImage+Utils.h"
 
 @implementation CLPixellateEffect
 {

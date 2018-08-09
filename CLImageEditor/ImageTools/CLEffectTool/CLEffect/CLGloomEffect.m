@@ -7,7 +7,7 @@
 
 #import "CLGloomEffect.h"
 
-#import "UIImage+Utility.h"
+#import "UIImage+Utils.h"
 #import "UIView+Frame.h"
 
 @implementation CLGloomEffect

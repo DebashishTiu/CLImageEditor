@@ -6,7 +6,7 @@
 //
 
 #import "CLImageToolInfo.h"
-#import "UIImage+Utility.h"
+#import "UIImage+Utils.h"
 
 @interface CLImageToolInfo()
 @property (nonatomic, strong) NSString *toolName;

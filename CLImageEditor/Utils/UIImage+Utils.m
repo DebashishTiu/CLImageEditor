@@ -5,11 +5,11 @@
 //  Copyright (c) 2013年 CALACULU. All rights reserved.
 //
 
-#import "UIImage+Utility.h"
+#import "UIImage+Utils.h"
 
 #import <Accelerate/Accelerate.h>
 
-@implementation UIImage (Utility)
+@implementation UIImage (Utils)
 
 + (UIImage*)decode:(UIImage*)image
 {
