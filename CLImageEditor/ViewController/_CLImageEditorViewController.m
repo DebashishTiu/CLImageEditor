@@ -10,6 +10,10 @@
 #import "CLImageToolBase.h"
 
 
+#define ColorRGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0f]
+
+#define header_color ColorRGB(19,66,142)
+
 #pragma mark- _CLImageEditorViewController
 
 static const CGFloat kNavBarHeight = 44.0f;
@@ -98,6 +102,9 @@ static const CGFloat kMenuBarHeight = 80.0f;
     self.navigationItem.rightBarButtonItem = [self createDoneButton];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
+    
+   //   [self.navigationController.navigationBar setBarTintColor: header_color];
+    
     if(_navigationBar==nil){
         UINavigationItem *navigationItem  = [[UINavigationItem alloc] init];
         navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(pushedCloseBtn:)];
@@ -132,6 +139,16 @@ static const CGFloat kMenuBarHeight = 80.0f;
     if([UIDevice iosVersion] < 7){
         _navigationBar.barStyle = UIBarStyleBlackTranslucent;
     }
+    
+    
+      [_navigationBar setBarTintColor: header_color];
+    _navigationBar.tintColor = [UIColor whiteColor];
+    
+    NSMutableDictionary *navBarTextAttributes = [NSMutableDictionary dictionaryWithCapacity:1];
+    [navBarTextAttributes setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+
+    _navigationBar.titleTextAttributes = navBarTextAttributes;
+
 }
 
 - (void)initMenuScrollView
