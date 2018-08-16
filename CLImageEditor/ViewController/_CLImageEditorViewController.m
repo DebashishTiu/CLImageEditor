@@ -17,7 +17,7 @@
 #pragma mark- _CLImageEditorViewController
 
 static const CGFloat kNavBarHeight = 44.0f;
-static const CGFloat kMenuBarHeight = 80.0f;
+static const CGFloat kMenuBarHeight = 60;////80.0f;
 
 @interface _CLImageEditorViewController()
 <CLImageToolProtocol, UINavigationBarDelegate>
@@ -445,6 +445,8 @@ static const CGFloat kMenuBarHeight = 80.0f;
     _menuView.frame = [window convertRect:_menuView.frame fromView:_menuView.superview];
     _navigationBar.frame = [window convertRect:_navigationBar.frame fromView:_navigationBar.superview];
     
+   
+    
     [window addSubview:_menuView];
     [window addSubview:_navigationBar];
     
@@ -543,8 +545,8 @@ static const CGFloat kMenuBarHeight = 80.0f;
     for(UIView *sub in _menuView.subviews){ [sub removeFromSuperview]; }
     
     CGFloat x = 0;
-    CGFloat W = 70;
-    CGFloat H = _menuView.height;
+    CGFloat W = 80;//70;
+    CGFloat H = W;//_menuView.height;
     
     int toolCount = 0;
     CGFloat padding = 0;
@@ -564,8 +566,10 @@ static const CGFloat kMenuBarHeight = 80.0f;
             continue;
         }
         
-        CLToolbarMenuItem *view = [CLImageEditorTheme menuItemWithFrame:CGRectMake(x+padding, 0, W, H) target:self action:@selector(tappedMenuView:) toolInfo:info];
+        CLToolbarMenuItem *view = [CLImageEditorTheme menuItemWithFrame:CGRectMake(x+padding, 3, W, H) target:self action:@selector(tappedMenuView:) toolInfo:info];
         [_menuView addSubview:view];
+       // view.layer.borderWidth = 1;
+        //view.backgroundColor = [UIColor redColor];
         x += W+padding;
     }
     _menuView.contentSize = CGSizeMake(MAX(x, _menuView.frame.size.width+1), 0);
