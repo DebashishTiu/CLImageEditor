@@ -23,6 +23,8 @@
 
 - (id)initWithImage:(UIImage*)image
 {
+    
+    
     return [self initWithImage:image delegate:nil];
 }
 

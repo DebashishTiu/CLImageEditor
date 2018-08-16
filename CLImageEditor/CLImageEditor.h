@@ -21,6 +21,10 @@
 @property (nonatomic, readonly) CLImageEditorTheme *theme;
 @property (nonatomic, readonly) CLImageToolInfo *toolInfo;
 @property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, assign) BOOL onlyCrop;
+
+//static CGFloat defaultDocNo;
+
 
 
 

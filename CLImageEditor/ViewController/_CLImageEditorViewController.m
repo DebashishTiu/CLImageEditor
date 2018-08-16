@@ -17,7 +17,7 @@
 #pragma mark- _CLImageEditorViewController
 
 static const CGFloat kNavBarHeight = 44.0f;
-static const CGFloat kMenuBarHeight = 60;////80.0f;
+static const CGFloat kMenuBarHeight = 80.0;//60;////80.0f;
 
 @interface _CLImageEditorViewController()
 <CLImageToolProtocol, UINavigationBarDelegate>
@@ -31,6 +31,8 @@ static const CGFloat kMenuBarHeight = 60;////80.0f;
 {
     UIImage *_originalImage;
     UIView *_bgView;
+    CLToolbarMenuItem *cropView;
+    BOOL firstTimeAutomaticCropDone;
 }
 @synthesize toolInfo = _toolInfo;
 
@@ -515,7 +517,7 @@ static const CGFloat kMenuBarHeight = 60;////80.0f;
 
 + (CGFloat)defaultDockedNumber
 {
-    return 0;
+    return 2;
 }
 
 + (NSString*)defaultTitle
@@ -561,7 +563,22 @@ static const CGFloat kMenuBarHeight = 60;////80.0f;
         padding = diff/(toolCount+1);
     }
     
+    
     for(CLImageToolInfo *info in self.toolInfo.sortedSubtools){
+        
+        
+        //CLClippingTool
+        if (self.onlyCrop) {
+            if ([info.toolName isEqualToString:@"CLClippingTool"]) {
+                info.available = YES;
+                
+            }
+            else
+            {
+                info.available = NO;
+            }
+        }
+        
         if(!info.available){
             continue;
         }
@@ -571,9 +588,28 @@ static const CGFloat kMenuBarHeight = 60;////80.0f;
        // view.layer.borderWidth = 1;
         //view.backgroundColor = [UIColor redColor];
         x += W+padding;
+        
+        
+        if (self.onlyCrop) {
+            if ([info.toolName isEqualToString:@"CLClippingTool"]) {
+                cropView = view;
+            }
+        }
     }
     _menuView.contentSize = CGSizeMake(MAX(x, _menuView.frame.size.width+1), 0);
+    
+    if (self.onlyCrop  && !firstTimeAutomaticCropDone) {
+        [self performSelector:@selector(showCropByDefault) withObject:nil afterDelay:0.5];
+
+    }
 }
+
+-(void)showCropByDefault
+{
+    [self setupToolWithToolInfo:cropView.toolInfo];
+    firstTimeAutomaticCropDone = YES;
+}
+
 
 - (void)resetImageViewFrame
 {
